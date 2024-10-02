@@ -1,9 +1,9 @@
 #include <iostream>
 
 int main() {
-// This program will calculate this differences in distance a car will drive through town and on the highway.
-const double gallon_tank = 20;
-double town_miles = gallon_tank * 23.5;
-double highway_miles = gallon_tank * 28.9;
-std::cout << "When driven in town, the car will travel " << town_miles << " miles.\n";
-std::cout << "When driven on the highway, the car will travel " << highway_miles << " miles.\n";}
+// This program will calculate out of people surveyed, how many drank energy drinks and how many out of those preffered citrus flavored ones.
+const double customers = 16500;
+double eg_consumers = customers * 0.15;
+double citrus_enjoyers = eg_consumers * 0.58;
+std::cout << "Out of people surveyed, " << eg_consumers << " said they drank one or more energy drinks per week.\n";
+std::cout << "Out of the people who drank energy drinks, " << citrus_enjoyers << " said they preferred citrus flavored energy drinks.\n";}
