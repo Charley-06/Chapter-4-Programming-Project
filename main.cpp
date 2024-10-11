@@ -2,6 +2,8 @@
 
 using namespace std;
 
+//This code generates 2 random numbers, letting the user press enter to see the sum of them both.
+
 int main() {
 srand(time(0));
 
