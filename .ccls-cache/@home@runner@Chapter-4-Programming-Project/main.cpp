@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -8,6 +9,18 @@ int month, year;
 // This will ask for a month and a year
 cout << "Enter a month (1-12): ";
 cin >> month;
+
+// this makes sure a valid month is entered
+  
+while (cin.fail() || month < 1 || month > 12) {
+cout << "Invalid month. Please enter a value between 1 and 12: ";
+
+// this makes sure the error message doesnt keep repeating
+
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+cin >> month;
+
 cout << "Enter a year: ";
 cin >> year;
 
