@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 
+//This code will display a bar chart using "*" to represent the population within a town between years. It will get this information from a file but need to ask the user for the town name and file name.
+
 using namespace std;
 
 int main() {
@@ -15,12 +17,17 @@ cin >> fileName;
 
 ifstream dataFile(fileName);
 
+if (!dataFile.is_open()) {
+cout << "Error opening file: " << fileName << endl;
+return 1;
+}
+
 cout << townName << " Population Growth" << endl;
 
 while (dataFile >> year >> population) {
 population = (population + 500) / 1000;
 
-cout << year << "i";
+cout << year << " ";
 
 for (int i = 0; i < population; i++) {
 cout << "*";
