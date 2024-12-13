@@ -1,48 +1,45 @@
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
-//This program will ask the user for the number of organisms, the average daily population increase as a percentage, and the number of days they will multiply. It will then predict the size of the population.
+double calculatePerimeter(double length, double width) {
+  return 2 * (length + width);
+}
+
+double calculateArea(double length, double width) {
+  return length * width;
+}
 
 int main() {
-int startingOrganisms, days;
-double dailyIncrease;
+  char anotherRectangle = 'y';
+
+while (anotherRectangle == 'y') {
+double length, width;
+
 
 do {
-cout << "Enter the starting number of organisms (at least 2): ";
-cin >> startingOrganisms;
-
-if (startingOrganisms < 2) {
-cout << "Invalid input. Please enter a number greater than or equal to 2." << endl;
+cout << "Enter the length of the rectangle: ";
+cin >> length;
+if (length < 0) {
+cout << "Invalid length. Please enter a non-negative value." << endl;
 }
-} while (startingOrganisms < 2);
+} while (length < 0);
 
 do {
-cout << "Enter the average daily population increase (as a percentage): ";
-cin >> dailyIncrease;
-
-if (dailyIncrease < 0) {
-cout << "Invalid input. Please enter a non-negative value." << endl;
+cout << "Enter the width of the rectangle: ";
+cin >> width;
+if (width < 0) {
+cout << "Invalid width. Please enter a non-negative value." << endl;
 }
-} while (dailyIncrease < 0);
+} while (width < 0);
 
-do {
-cout << "Enter the number of days the organisms will multiply (at least 1): ";
-cin >> days;
+double perimeter = calculatePerimeter(length, width);
+double area = calculateArea(length, width);
+cout << "Perimeter: " << perimeter << endl;
+cout << "Area: " << area << endl;
 
-if (days < 1) {
-cout << "Invalid input. Please enter a number greater than or equal to 1." << endl;
-}
-} while (days < 1);
-
-cout << "\nDay\tPopulation" << endl;
-cout << "-----------------" << endl;
-
-for (int i = 1; i <= days; ++i) {
-int population = startingOrganisms * (1 + (dailyIncrease / 100));
-cout << i << "\t" << population << endl;
-startingOrganisms = population;
+cout << "Do you want to process another rectangle (y/n)? ";
+cin >> anotherRectangle;
 }
 
 return 0;
