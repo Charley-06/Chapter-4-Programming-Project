@@ -1,37 +1,82 @@
 #include <iostream>
-#include <fstream>
 #include <string>
-
-//This program reads student names from a file, and then says which student will be in the front of the line, as well as the back. It will also use this data to determine how many students are in the class.
+#include <limits>
 
 using namespace std;
 
+//This program will ask the user for the number of accidents in each region and then tell the region with the least number of accidents.
+
 int main() {
-ifstream inputFile("LineUp.txt");
+int northAccidents, southAccidents, eastAccidents, westAccidents, centralAccidents;
 
-string name;
-string firstStudent, lastStudent;
-int studentCount = 0;
-
-while (getline(inputFile, name)) {
-studentCount++;
-
-if (studentCount == 1) {
-firstStudent = name;
-} else {
-if (name < lastStudent) {
-lastStudent = name;
+do {
+cout << "Enter the number of accidents in the North region: ";
+cin >> northAccidents;
+if (northAccidents < 0) {
+cout << "Invalid input. Please enter a non-negative value." << endl;
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
+} while (northAccidents < 0);
+
+do {
+cout << "Enter the number of accidents in the South region: ";
+cin >> southAccidents;
+if (southAccidents < 0) {
+cout << "Invalid input. Please enter a non-negative value." << endl;
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
 }
+} while (southAccidents < 0);
 
-lastStudent = name;
+do {
+cout << "Enter the number of accidents in the East region: ";
+cin >> eastAccidents;
+if (eastAccidents < 0) {
+cout << "Invalid input. Please enter a non-negative value." << endl;
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
 }
+} while (eastAccidents < 0);
 
-inputFile.close();
+do {
+cout << "Enter the number of accidents in the West region: ";
+cin >> westAccidents;
+if (westAccidents < 0) {
+cout << "Invalid input. Please enter a non-negative value." << endl;
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+}
+} while (westAccidents < 0);
 
-cout << "Number of students in the class: " << studentCount << endl;
-cout << "Student at the front of the line: " << firstStudent << endl;
-cout << "Student at the end of the line: " << lastStudent << endl;
+do {
+cout << "Enter the number of accidents in the Central region: ";
+cin >> centralAccidents;
+if (centralAccidents < 0) {
+cout << "Invalid input. Please enter a non-negative value." << endl;
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+}
+} while (centralAccidents < 0);
+
+int minAccidents = min(northAccidents, min(southAccidents, min(eastAccidents, min(westAccidents, centralAccidents))));
+
+cout << "Regions with the fewest accidents:" << endl;
+if (northAccidents == minAccidents) {
+cout << "North" << endl;
+}
+if (southAccidents == minAccidents) {
+cout << "South" << endl;
+}
+if (eastAccidents == minAccidents) {
+cout << "East" << endl;
+}
+if (westAccidents == minAccidents) {
+cout << "West" << endl;
+}
+  if (centralAccidents == minAccidents) {
+cout << "Central" << endl;
+}
 
 return 0;
 }
