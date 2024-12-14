@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//This program displays a chart of degrees fro Fahrenheit and Celsius, using a formula to calculate the difference.
+// Uses a chart to covert the temperature from Fahrenheit to Celsius using a formula
 
 double fahrenheitToCelsius(double fahrenheit) {
 return (5.0 / 9.0) * (fahrenheit - 32);
