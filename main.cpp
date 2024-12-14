@@ -2,16 +2,18 @@
 
 using namespace std;
 
+//This program will calculate the length and width of a rectangle and then give the area and perimeter of the rectangle.
+
 double calculatePerimeter(double length, double width) {
-  return 2 * (length + width);
+return 2 * (length + width);
 }
 
 double calculateArea(double length, double width) {
-  return length * width;
+return length * width;
 }
 
 int main() {
-  char anotherRectangle = 'y';
+char anotherRectangle = 'y';
 
 while (anotherRectangle == 'y') {
 double length, width;
