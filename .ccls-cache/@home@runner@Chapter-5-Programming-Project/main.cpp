@@ -1,22 +1,36 @@
 #include <iostream>
-#include <iomanip>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-//This program displays a chart of degrees fro Fahrenheit and Celsius, using a formula to calculate the difference.
+//this program asks for 5 different judges scores and then uses them to find the contestants final score.
 
-double fahrenheitToCelsius(double fahrenheit) {
-return (5.0 / 9.0) * (fahrenheit - 32);
+double calculateScore(const vector<double>& scores) {
+double highestScore = *max_element(scores.begin(), scores.end());
+double lowestScore = *min_element(scores.begin(), scores.end());
+
+vector<double> remainingScores(scores);
+remainingScores.erase(remove(remainingScores.begin(), remainingScores.end(), highestScore), remainingScores.end());
+remainingScores.erase(remove(remainingScores.begin(), remainingScores.end(), lowestScore), remainingScores.end());
+
+double sum = 0;
+for (double score : remainingScores) {
+sum += score;
+}
+return sum / remainingScores.size();
 }
 
 int main() {
-cout << "Fahrenheit\tCelsius" << endl;
-cout << "-------------------" << endl;
+vector<double> scores(5);
 
-for (int fahrenheit = 0; fahrenheit <= 20; fahrenheit++) {
-double celsius = fahrenheitToCelsius(fahrenheit);
-cout << fahrenheit << "\t" << fixed << setprecision(2) << celsius << endl;
+cout << "Enter the scores from the five judges (separated by spaces): ";
+for (int i = 0; i < 5; i++) {
+cin >> scores[i];
 }
+
+double finalScore = calculateScore(scores);
+cout << "The contestant's final score is: " << finalScore << endl;
 
 return 0;
 }
